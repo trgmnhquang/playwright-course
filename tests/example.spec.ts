@@ -4,10 +4,30 @@ import { test, expect } from '@playwright/test';
 test('homepage has correct title', async ({ page }) => {
   await page.goto('https://example.com');
 
-  console.log(
-  await page.getByRole('heading', { name: 'Example Domain' }).count()
-);
+  const expectedTitle: string = 'Example Domain';
+  const learnMoreText: string = 'Learn more';
+  const isExpectation: boolean = true;
+  await expect(page).toHaveTitle(expectedTitle);
+  await expect(page.locator('a')).toHaveText(learnMoreText);
+  expect(isExpectation).toBe(true);
+})
 
-  await expect(page).toHaveTitle('Example Domain');
-  await expect(page.locator('a')).toHaveText('Learn more');
+test('practice basic Typescripts values', async () => {
+  const userName: string = 'John Doe';
+  const userAge: number = 30;
+  const isActive: boolean = true;
+
+  const expectedResult = userName === 'John Doe' && userAge === 30 && isActive === true;
+  expect(expectedResult).toBe(true);
+})
+
+test('practice basic Typescripts operators', async () => {
+  const statusCode = 200;
+  const responseTime = 750;
+  const hasError = false;
+
+  const isSuccess = statusCode === 200;
+  const isFast = responseTime < 1000;
+  const isHealthy = isSuccess && isFast && !hasError;
+  expect(isHealthy).toBe(true);
 })

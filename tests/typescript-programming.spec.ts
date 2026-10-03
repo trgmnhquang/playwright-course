@@ -36,10 +36,10 @@ class User {
     age: number;
     isActive: boolean;
 
-    constructor(username: string, age: number) {
+    constructor(username: string, age: number, isActive: boolean) {
         this.username = username;
         this.age = age;
-        this.isActive = this.isActive
+        this.isActive = isActive
     }
 
     canLogin(): boolean {
@@ -47,5 +47,5 @@ class User {
     }
 }
 
-const admin = new User('Hiro', 26);
+const admin = new User('Hiro', 26, true);
 console.log(admin.canLogin())
